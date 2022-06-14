@@ -7,25 +7,20 @@ function getInputValue(inputId) {
 
 }
 
-function updateTotal(fieldId, amount) {
-    const totalTag = document.getElementById(fieldId);
-    const totalTagInText = totalTag.innerText;
-    const previousTotal = parseFloat(totalTagInText);
-    const newTotal = previousTotal + amount;
-    totalTag.innerText = newTotal;
-}
-
 function getInnerTextValue(fieldId) {
     const fieldTag = document.getElementById(fieldId);
     const fieldTagInText = fieldTag.innerText;
     const fieldTagInTextValue = parseFloat(fieldTagInText);
     return fieldTagInTextValue;
 }
+function updateTotal(fieldId, amount) {
+    const previousTotal = getInnerTextValue(fieldId);
+    const newTotal = previousTotal + amount;
+    document.getElementById(fieldId).innerText = newTotal;
+}
 
 function updateBalance(amount, isAdding) {
-    const balanceTotal = document.getElementById('balance-total');
-    const balanceTotalText = balanceTotal.innerText;
-    const previousBalanceTotal = parseFloat(balanceTotalText);
+    const previousBalanceTotal = getInnerTextValue('balance-total');
     let newBalance;
 
     if (isAdding == true) {
@@ -35,7 +30,7 @@ function updateBalance(amount, isAdding) {
         newBalance = previousBalanceTotal - amount;
     }
 
-    balanceTotal.innerText = newBalance;
+    document.getElementById('balance-total').innerText = newBalance;
 
 }
 
